@@ -1,0 +1,107 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/*****************************************************************
+/Core elements
+/*****************************************************************/
+body{
+    background-color:#333;
+}
+#wrapper{
+    margin:0 auto;
+    width:403px;
+    height:673px;
+    padding:75px 0 0 58px;
+    background: url(../img/tennisCourt.png) no-repeat 0 0;
+    -moz-box-shadow: 0 0 55px rgba(0, 0, 0, 0.9);
+    -webkit-box-shadow: 0 0 55px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 55px rgba(0, 0, 0, 0.9);
+}
+#court{
+    width: 344px;
+    height:599px;
+    position: relative;
+}
+/*****************************************************************
+/Ball
+/*****************************************************************/
+#ball{
+    width:14px;
+    height:14px;
+    background:url(../img/tennisSprite.png) no-repeat -33px -166px;
+    position:absolute;
+    top:294px;
+    left:165px;
+}
+/*****************************************************************
+/Player 1
+/*****************************************************************/
+#player1{
+    width:52px;
+    height:73px;
+    background:url(../img/tennisSprite.png) no-repeat -4px -2px;
+    position:absolute;
+    top:-55px;
+    left:0;
+}
+#player1.active{
+    background-position: -278px -2px;
+}
+/*****************************************************************
+/Player 2
+/*****************************************************************/
+#player2{
+    width:52px;
+    height:73px;
+    background:url(../img/tennisSprite.png) no-repeat -4px -80px;
+    position:absolute;
+    top:541px;
+    left:0px;
+}
+#player2.active{
+    background-position: -278px -80px;
