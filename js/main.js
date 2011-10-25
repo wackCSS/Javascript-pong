@@ -53,11 +53,13 @@ $(document).ready(function() {
 			height: $('#court').outerHeight(true)
 		},
 		ball: {
-			speed: 1,
+			speed: 10,
 			width: $('#ball').width(),
 			height: $('#ball').height(),
 			leftPos: 165,
-			topPos: 294
+			topPos: 294,
+			velX: 3,
+			velY: 3
 		},
 		player1: {
 			speed: 10,
@@ -170,12 +172,31 @@ $(document).ready(function() {
 	};
 
 	var moveBall = function(){
+		// plan is to check position of ball and see if it collides then update position
 		defaults.ball.leftPos += defaults.ball.speed;
         defaults.ball.topPos += defaults.ball.speed;
+
+
+        //if ball touches RHS of court
+		if((defaults.ball.leftPos - defaults.ball.width) >= defaults.court.width){
+
+		}
+
+
+		//if ball touches LHS of court
+		if(defaults.ball.leftPos == 0){
+
+		}
+
+
 
         $('#ball').css('left', defaults.ball.leftPos);
         $('#ball').css('top', defaults.ball.topPos);
 
+
+	};
+
+	var wallColisionCheck = function(){
 
 	};
 
