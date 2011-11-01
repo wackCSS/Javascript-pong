@@ -53,13 +53,13 @@ $(document).ready(function() {
 			height: $('#court').outerHeight(true)
 		},
 		ball: {
-			speed: 10,
+
 			width: $('#ball').width(),
 			height: $('#ball').height(),
 			leftPos: 165,
 			topPos: 294,
-			velX: 3,
-			velY: 3
+			velX: 1,
+			velY: 1
 		},
 		player1: {
 			speed: 10,
@@ -171,28 +171,42 @@ $(document).ready(function() {
 		$('#player2').css('left', defaults.player2.leftPos);
 	};
 
+
+
+
 	var moveBall = function(){
 		// plan is to check position of ball and see if it collides then update position
-		defaults.ball.leftPos += defaults.ball.speed;
-        defaults.ball.topPos += defaults.ball.speed;
-
 
         //if ball touches RHS of court
-		if((defaults.ball.leftPos - defaults.ball.width) >= defaults.court.width){
-
+		if(defaults.ball.leftPos >= 330 ){
+			defaults.ball.velX = -defaults.ball.velX;
 		}
 
 
 		//if ball touches LHS of court
-		if(defaults.ball.leftPos == 0){
-
+		if(defaults.ball.leftPos <= 0){
+			defaults.ball.velX = -defaults.ball.velX;
 		}
 
 
+		// if ball bounces off bottom of court
+		if(defaults.ball.topPos >= 585){
+			defaults.ball.velY = -defaults.ball.velY;
+		}
+
+
+		// if ball bounces off top of court
+		if(defaults.ball.topPos <= 0){
+			defaults.ball.velY = -defaults.ball.velY;
+		}
+
+		defaults.ball.leftPos += defaults.ball.velX;
+        defaults.ball.topPos += defaults.ball.velY;
 
         $('#ball').css('left', defaults.ball.leftPos);
         $('#ball').css('top', defaults.ball.topPos);
 
+        console.log(defaults.ball.velY);
 
 	};
 
@@ -200,18 +214,8 @@ $(document).ready(function() {
 
 	};
 
-	setInterval(moveBall, 100);
+	setInterval(moveBall, 10);
 
     console.log('jQuery Loaded');
-	/*console.log('browser width: ' + defaults.browser.width + 'px');
-	console.log('browser height: ' + defaults.browser.height + 'px');
-    console.log('court width: ' + defaults.court.width + 'px');
-	console.log('court height: ' + defaults.court.height + 'px');
-    console.log('ball height: ' + defaults.ball.height + 'px');
-    console.log('ball width: ' + defaults.ball.width + 'px');
-    console.log('player1 height: ' + defaults.player1.height + 'px');
-    console.log('player1 width: ' + defaults.player1.width + 'px');
-	console.log('player2 height: ' + defaults.player2.height + 'px');
-    console.log('player2 width: ' + defaults.player2.width + 'px');*/
 
 });
