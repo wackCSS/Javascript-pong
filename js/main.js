@@ -46,7 +46,7 @@ $(document).ready(function() {
 			height: $(window).height()
 		},
 		world:{
-			timer: 10
+			timer: 100
 		},
 		court: {
 			width: $('#court').outerWidth(true),
@@ -58,8 +58,8 @@ $(document).ready(function() {
 			height: $('#ball').height(),
 			leftPos: 165,
 			topPos: 294,
-			velX: 1,
-			velY: 1
+			velX: 5,
+			velY: 5
 		},
 		player1: {
 			speed: 10,
@@ -98,22 +98,22 @@ $(document).ready(function() {
 				// player1 presses the left arrow
 				case defaults.player1.left:			console.log("left arrow down");
 													defaults.player1.keyLeft = true;
-													player1Move();
+													playerMove();
 													break;
 				// player1 presses the right arrow
 				case defaults.player1.right:		console.log("right arrow down");
 													defaults.player1.keyRight = true;
-													player1Move();
+													playerMove();
 													break;
 				// player2 presses the a key
 				case defaults.player2.left:			console.log("a key down");
 													defaults.player2.keyLeft = true;
-													player2Move();
+													playerMove();
 													break;
 				// player2 presses the s key
 				case defaults.player2.right:		console.log("s key down");
 													defaults.player2.keyRight = true;
-													player2Move();
+													playerMove();
 													break;
 			}
 		});
@@ -145,7 +145,9 @@ $(document).ready(function() {
 	})();
 
 
-	var player1Move = function(){
+
+
+	var playerMove = function(){
 
 		if(defaults.player1.keyRight === true && defaults.player1.leftPos <= defaults.court.width - defaults.player1.width){
 			defaults.player1.leftPos += defaults.player1.speed;
@@ -155,12 +157,7 @@ $(document).ready(function() {
 			defaults.player1.leftPos -= defaults.player1.speed;
 		}
 
-		$('#player1').css('left', defaults.player1.leftPos);
-	};
-
-	var player2Move = function(){
-
-		if(defaults.player2.keyRight === true && defaults.player2.leftPos <= defaults.court.width - defaults.player2.width){
+        if(defaults.player2.keyRight === true && defaults.player2.leftPos <= defaults.court.width - defaults.player2.width){
 			defaults.player2.leftPos += defaults.player2.speed;
 		}
 
@@ -168,10 +165,9 @@ $(document).ready(function() {
 			defaults.player2.leftPos -= defaults.player2.speed;
 		}
 
-		$('#player2').css('left', defaults.player2.leftPos);
+		$('#player1').css('left', defaults.player1.leftPos);
+        $('#player2').css('left', defaults.player2.leftPos);
 	};
-
-
 
 
 	var moveBall = function(){
@@ -190,15 +186,15 @@ $(document).ready(function() {
 
 
 		// if ball bounces off bottom of court
-		if(defaults.ball.topPos >= 585){
+		/*if(defaults.ball.topPos >= 585){
 			defaults.ball.velY = -defaults.ball.velY;
-		}
+		}*/
 
 
 		// if ball bounces off top of court
-		if(defaults.ball.topPos <= 0){
+		/*if(defaults.ball.topPos <= 0){
 			defaults.ball.velY = -defaults.ball.velY;
-		}
+		}*/
 
 		defaults.ball.leftPos += defaults.ball.velX;
         defaults.ball.topPos += defaults.ball.velY;
@@ -206,15 +202,9 @@ $(document).ready(function() {
         $('#ball').css('left', defaults.ball.leftPos);
         $('#ball').css('top', defaults.ball.topPos);
 
-        console.log(defaults.ball.velY);
-
 	};
 
-	var wallColisionCheck = function(){
-
-	};
-
-	setInterval(moveBall, 10);
+	setInterval(moveBall, defaults.world.timer);
 
     console.log('jQuery Loaded');
 
