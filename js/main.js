@@ -31,12 +31,6 @@ $(document).ready(function() {
 		$('body').css('padding-top', windowYoffset);
 	});
 
-
-
-	//setInterval('moveBall()', 1 * 1000);
-
-
-
 	/**
 	 * Setup default settings
 	*/
@@ -46,7 +40,7 @@ $(document).ready(function() {
 			height: $(window).height()
 		},
 		world:{
-			timer: 10
+			timer: 100
 		},
 		court: {
 			width: $('#court').outerWidth(true),
@@ -58,8 +52,8 @@ $(document).ready(function() {
 			height: $('#ball').height(),
 			leftPos: 165,
 			topPos: 294,
-			velX: 1,
-			velY: 1
+			velX: 5,
+			velY: 5
 		},
 		player1: {
 			speed: 10,
@@ -174,7 +168,7 @@ $(document).ready(function() {
 
 
 
-	var moveBall = function(){
+	var physics = function(){
 		// plan is to check position of ball and see if it collides then update position
 
         //if ball touches RHS of court
@@ -182,23 +176,33 @@ $(document).ready(function() {
 			defaults.ball.velX = -defaults.ball.velX;
 		}
 
-
 		//if ball touches LHS of court
 		if(defaults.ball.leftPos <= 0){
 			defaults.ball.velX = -defaults.ball.velX;
 		}
-
 
 		// if ball bounces off bottom of court
 		if(defaults.ball.topPos >= 585){
 			defaults.ball.velY = -defaults.ball.velY;
 		}
 
-
 		// if ball bounces off top of court
-		if(defaults.ball.topPos <= 0){
+		/*if(defaults.ball.topPos <= 0){
 			defaults.ball.velY = -defaults.ball.velY;
-		}
+		}*/
+
+        if(defaults.ball.topPos <= 0){
+
+            console.log('Bounce Pos');
+
+            if(defaults.ball.leftPos >= defaults.player1.leftPos && defaults.ball.leftPos <= (defaults.ball.leftPos + 55)){
+
+                console.log('collision detected');
+                defaults.ball.velY = -defaults.ball.velY;
+            }
+
+        }
+
 
 		defaults.ball.leftPos += defaults.ball.velX;
         defaults.ball.topPos += defaults.ball.velY;
@@ -206,15 +210,9 @@ $(document).ready(function() {
         $('#ball').css('left', defaults.ball.leftPos);
         $('#ball').css('top', defaults.ball.topPos);
 
-        console.log(defaults.ball.velY);
-
 	};
 
-	var wallColisionCheck = function(){
-
-	};
-
-	setInterval(moveBall, 10);
+	setInterval(physics, defaults.world.timer);
 
     console.log('jQuery Loaded');
 
