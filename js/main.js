@@ -181,21 +181,21 @@ $(document).ready(function() {
 			defaults.ball.velX = -defaults.ball.velX;
 		}
 
-		// if ball bounces off bottom of court
-		if(defaults.ball.topPos >= 585){
-			defaults.ball.velY = -defaults.ball.velY;
-		}
-
-		// if ball bounces off top of court
-		/*if(defaults.ball.topPos <= 0){
-			defaults.ball.velY = -defaults.ball.velY;
-		}*/
-
         if(defaults.ball.topPos <= 0){
 
             console.log('Bounce Pos');
 
-            if(defaults.ball.leftPos >= defaults.player1.leftPos && defaults.ball.leftPos <= (defaults.ball.leftPos + 55)){
+            if(defaults.ball.leftPos >= defaults.player1.leftPos && defaults.ball.leftPos <= (defaults.ball.leftPos + 52)){
+
+                console.log('collision detected');
+                defaults.ball.velY = -defaults.ball.velY;
+            }
+
+        }
+
+        if(defaults.ball.topPos >= 599){
+
+            if(defaults.ball.leftPos >= defaults.player2.leftPos && defaults.ball.leftPos <= (defaults.ball.leftPos + 52)){
 
                 console.log('collision detected');
                 defaults.ball.velY = -defaults.ball.velY;

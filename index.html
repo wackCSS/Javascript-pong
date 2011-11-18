@@ -5,7 +5,7 @@
     <title>HTML Template</title>
     
     <link rel="stylesheet" href="css/main.css" type="text/css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+    <script src="js/jquery.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -17,8 +17,36 @@
 			</div>
 			<div id="ball">
 			</div>
-		</div>		
+		</div>
+        <dl id="scoreBoard">
+            <dt>P1:</dt>
+            <dd id="p1Score">0</dd>
+            <dt>P2:</dt>
+            <dd id="p2Score">0</dd>
+        </dl>
+        <div id="help">
+            <h1>Simple jQuery Pong</h1>
+            <div>
+                <h2>Top player:</h2>
+                <dl>
+                    <dt>Left:</dt>
+                    <dd>Left Arrow</dd>
+                     <dt>Right:</dt>
+                    <dd>Right Arrow</dd>
+                </dl>
+            </div>
+            <div>
+                <h2>Bottom player:</h2>
+                <dl>
+                    <dt>Left:</dt>
+                    <dd>A key</dd>
+                     <dt>Right:</dt>
+                    <dd>S Key</dd>
+                </dl>
+            </div>
+
+        </div>
 	</div>
-    <script src="js/main.js" type="text/javascript"></script>
+    <script src="js/refactorMain.js" type="text/javascript"></script>
 </body>
 </html>

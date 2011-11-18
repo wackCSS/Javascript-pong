@@ -51,19 +51,22 @@ table {
 /*****************************************************************/
 body{
     background-color:#333;
+    overflow: hidden;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 62.5%;
 }
 #wrapper{
     margin:0 auto;
     width:403px;
     height:673px;
-    padding:75px 0 0 58px;
+    padding:75px 0 0 60px;
     background: url(../img/tennisCourt.png) no-repeat 0 0;
     -moz-box-shadow: 0 0 55px rgba(0, 0, 0, 0.9);
     -webkit-box-shadow: 0 0 55px rgba(0, 0, 0, 0.9);
     box-shadow: 0 0 55px rgba(0, 0, 0, 0.9);
 }
 #court{
-    width: 344px;
+    width: 341px;
     height:599px;
     position: relative;
 }
@@ -75,7 +78,7 @@ body{
     height:14px;
     background:url(../img/tennisSprite.png) no-repeat -33px -166px;
     position:absolute;
-    top:294px;
+    top:295px;
     left:165px;
 }
 /*****************************************************************
@@ -84,14 +87,22 @@ body{
 #player1{
     width:52px;
     height:73px;
-    background:url(../img/tennisSprite.png) no-repeat -4px -2px;
+    background:url(../img/tennisSprite.png) no-repeat -104px -2px;
     position:absolute;
     top:-55px;
-    left:0;
+    left:110px;
+    border-bottom: 1px solid red;
 }
 #player1.active{
-    background-position: -278px -2px;
+    background-position: -195px -2px;
 }
+#player1.left{
+    background-position: -104px -2px;
+}
+#player1.right{
+    background-position: 4px -2px;
+}
+
 /*****************************************************************
 /Player 2
 /*****************************************************************/
@@ -101,7 +112,57 @@ body{
     background:url(../img/tennisSprite.png) no-repeat -4px -80px;
     position:absolute;
     top:541px;
-    left:0px;
+    left:110px;
+    border-bottom: 1px solid red;
 }
 #player2.active{
     background-position: -278px -80px;
+}
+#player2.left{
+    background-position: -111px -80px;
+}
+#player2.right{
+    background-position: -4px -80px;
+}
+/*****************************************************************
+/Help
+/*****************************************************************/
+#help {
+    position:absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #000;
+    border:  1px solid #fff;
+    color: #fff;
+    font-size: 1em;
+    padding: 10px;
+    opacity: 0.05;
+    -moz-transition: all 1s ease-in-out;
+    -webkit-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}
+#help:hover {
+    opacity: 1;
+    scale: 1;
+}
+#help h1{
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+#help h2{
+    font-size: 1.1em;
+    float: left;
+    margin: 5px 0;
+}
+#help dt{
+    float: left;
+    clear: left;
+}
+#help dd{
+    float: left;
+    margin-left: 5px;
+}
+/*****************************************************************
+/Score 
+/*****************************************************************/
