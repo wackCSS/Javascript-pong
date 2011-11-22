@@ -111,7 +111,7 @@ $(document).ready(function() {
 
                 // temp animation
                 p1.addClass('active');
-                setInterval(removeActive, 750);
+                removeActive();
                 
             }
         }
@@ -125,7 +125,7 @@ $(document).ready(function() {
 
                 // temp animation
                 p2.addClass('active');
-                setInterval(removeActive, 750);
+                removeActive();
             }
         }
 
@@ -158,8 +158,12 @@ $(document).ready(function() {
 
     // temporary remove animation function
     function removeActive(){
-        p2.removeClass('active');
-        p1.removeClass('active');
+        setTimeout(function() {
+            p2.removeClass('active');
+            p1.removeClass('active');
+
+        }, 750);
+
     }
 
     // listens for key down and sets relevant var to true

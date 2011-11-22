@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a746436a-3f91-49d3-a796-0c395abf92b4" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/main.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/ooPong.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/simplePong.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.css" afterPath="$PROJECT_DIR$/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/refactorMain.js" afterPath="$PROJECT_DIR$/js/refactorMain.js" />
-    </list>
+    <list default="true" id="a746436a-3f91-49d3-a796-0c395abf92b4" name="Default" comment="" />
     <ignored path="Javascript-pong.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
