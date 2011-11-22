@@ -2,49 +2,40 @@
  * Project: Pong v2
  * User: Luke Edwards
  * Date: 15/11/2011
- * Time: 08:43
- * resources:
- * http://learning-computer-programming.blogspot.com/2009/09/simple-pong-game-using-javascript.html
+ *
  *
  * TODO:
- * what happens when ball goes out of play
  * create ball and randomise velocity / direction
  * pause / resume
  * spin off of paddle collision
  * sounds & animation
- * score
+ * remove DRY code for anims etc
  */
 
 $(document).ready(function() {
-    console.log('world init');
 
+    console.log('world init');
 
         //world settings
     var worldSpeed      =   1,
-        pause          = false,
-
-
-        // court settings
-        courtWidth      =   341,
-        courtHeight     =   599,
-
+        pause           = false,
+        p1Score         =   0,
+        p2Score         =   0,
 
         // ball settings
         ball            =   $('#ball'),
-        ballWidth       =   14,
-        ballHeight      =   14,
         ballX           =   $('#ball').position().left,
         ballY           =   $('#ball').position().top,
-        velX            =   0,
-        velY            =   0,
+        velX            =   1,
+        velY            =   1,
 
         //player settings
         p1              =   $('#player1'),
         p2              =   $('#player2'),
         pWidth          =   52,
         pSpeed          =   1,
-        p1X             =   110,
-        p2X             =   110,
+        p1X             =   1,
+        p2X             =   1,
         p1KeyLeft       =   37,
         p1KeyRight      =   39,
         p2KeyLeft       =   65,
@@ -71,7 +62,6 @@ $(document).ready(function() {
 
     // this is the timer to start + run the game loop
     setInterval(physics, worldSpeed);
-
 
     // this is where the magic happens
     function physics(){
@@ -101,12 +91,9 @@ $(document).ready(function() {
         }
         p2.css('left', p2X);
 
-
         // updates the velocity of the ball
         ballX += velX;
         ballY += velY;
-
-
 
         // if ball hits right or left wall
         if(ballX < 0 || ballX >= 325 ){
@@ -119,7 +106,13 @@ $(document).ready(function() {
             // and ball is within left edge of paddle and right edge of paddle
             if(ballX >= p1X && ballX <= (p1X + pWidth)){
                 // bounce
+
                 velY = -velY;
+
+                // temp animation
+                p1.addClass('active');
+                setInterval(removeActive, 750);
+                
             }
         }
 
@@ -129,7 +122,26 @@ $(document).ready(function() {
             if(ballX >= p2X && ballX <= (p2X + pWidth)){
                 //bounce
                 velY = -velY;
+
+                // temp animation
+                p2.addClass('active');
+                setInterval(removeActive, 750);
             }
+        }
+
+        // handles scoring - look at a way of combining these just like bounce
+        if(ballY <= -20){
+
+            p2Score ++;
+            $('#p2Score').text(p2Score);
+            resetBall();
+        }
+
+        if(ballY >= 620){
+
+            p1Score ++;
+            $('#p1Score').text(p1Score);
+            resetBall();
         }
 
         // updates the position of the ball
@@ -138,18 +150,16 @@ $(document).ready(function() {
 
     }
 
-    /*function createBall(){
-        if(!$('#ball').length){
-            $('<div id="ball"></div>')
-                .appendTo('#court');
-        }
-    }*/
+    // resets ball to court vertical center and random position horizontally
+    function resetBall(){
+        ballX = Math.floor(Math.random()*339);
+        ballY = 295;
+    }
 
-    function killBall(){
-        if(!$('#ball').length){
-            $('<div id="ball"></div>')
-                .appendTo('#court');
-        }
+    // temporary remove animation function
+    function removeActive(){
+        p2.removeClass('active');
+        p1.removeClass('active');
     }
 
     // listens for key down and sets relevant var to true
@@ -157,21 +167,13 @@ $(document).ready(function() {
     {
         switch(e.which)
         {
-            case p1KeyLeft  : p1MoveLeft     = true;
+            case p1KeyLeft  : p1MoveLeft    = true;
                 break;
             case p1KeyRight : p1MoveRight   = true;
                 break;
-            case p2KeyLeft  : p2MoveLeft     = true;
+            case p2KeyLeft  : p2MoveLeft    = true;
                 break;
             case p2KeyRight : p2MoveRight   = true;
-                break;
-            case spaceBar   : e.preventDefault();
-                createBall();
-                console.log('space');
-                break;
-            case enter      : e.preventDefault();
-                startPhysics();
-                console.log('enter');
                 break;
         }
     });
@@ -181,11 +183,11 @@ $(document).ready(function() {
     {
         switch(e.which)
         {
-            case p1KeyLeft  : p1MoveLeft     = false;
+            case p1KeyLeft  : p1MoveLeft    = false;
                 break;
             case p1KeyRight : p1MoveRight   = false;
                 break;
-            case p2KeyLeft  : p2MoveLeft     = false;
+            case p2KeyLeft  : p2MoveLeft    = false;
                 break;
             case p2KeyRight : p2MoveRight   = false;
                 break;

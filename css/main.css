@@ -93,16 +93,15 @@ body{
     left:110px;
     border-bottom: 1px solid red;
 }
-#player1.active{
-    background-position: -195px -2px;
-}
 #player1.left{
     background-position: -104px -2px;
 }
 #player1.right{
     background-position: 4px -2px;
 }
-
+#player1.active{
+    background-position: -195px -2px;
+}
 /*****************************************************************
 /Player 2
 /*****************************************************************/
@@ -115,14 +114,14 @@ body{
     left:110px;
     border-bottom: 1px solid red;
 }
-#player2.active{
-    background-position: -278px -80px;
-}
 #player2.left{
     background-position: -111px -80px;
 }
 #player2.right{
     background-position: -4px -80px;
+}
+#player2.active{
+    background-position: -278px -80px;
 }
 /*****************************************************************
 /Help
@@ -166,3 +165,21 @@ body{
 /*****************************************************************
 /Score 
 /*****************************************************************/
+#scoreBoard {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+#scoreBoard dt {
+    color: #fff;
+    font-size: 2em;
+    float: left;
+    margin:  0 5px 0 10px;
+    font-weight: bold;
+}
+#scoreBoard dd{
+    color: #fff;
+    font-size: 2em;
+    float: left;
+    margin:  0 10px 0 5px;
+}
