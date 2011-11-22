@@ -8,7 +8,6 @@
  * create ball and randomise velocity / direction
  * pause / resume
  * spin off of paddle collision
- * sounds & animation
  * remove DRY code for anims etc
  */
 
@@ -21,6 +20,8 @@ $(document).ready(function() {
         pause           = false,
         p1Score         =   0,
         p2Score         =   0,
+        audio          =   $('#audio')[0],
+
 
         // ball settings
         ball            =   $('#ball'),
@@ -111,6 +112,7 @@ $(document).ready(function() {
 
                 // temp animation
                 p1.addClass('active');
+                audio.play();
                 removeActive();
                 
             }
@@ -125,6 +127,7 @@ $(document).ready(function() {
 
                 // temp animation
                 p2.addClass('active');
+                audio.play();
                 removeActive();
             }
         }
@@ -161,7 +164,6 @@ $(document).ready(function() {
         setTimeout(function() {
             p2.removeClass('active');
             p1.removeClass('active');
-
         }, 750);
 
     }
